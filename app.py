@@ -57,7 +57,7 @@ if st.button('Посчитать'):
         from module.lemmatizer import Lemmatizer
 
         with st.spinner('Подсчет может занять несколько минут ...'):
-            df, df_diff, word1_diff, words2_diff = Lemmatizer().process(dataframe=to_process[:200])    
+            df, df_diff, word1_diff, words2_diff = Lemmatizer().process(dataframe=to_process)    
             st.info("Таблица лемматизированных слов")
             st.dataframe(data=df, use_container_width=True)
             st.info("Таблица лемматизированных слов разница")

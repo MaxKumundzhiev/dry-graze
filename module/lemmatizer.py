@@ -4,17 +4,19 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from spacy_download import load_spacy
-
+import spacy
 
 class Lemmatizer:
     def __init__(self) -> None:
-        self.model = load_spacy("ru_core_news_sm")
+        # self.model = load_spacy("ru_core_news_sm")
+        self.model = spacy.load('ru_core_news_sm')
 
     def lemmatize(self, word):
         doc = self.model(word)
         return " ".join([token.lemma_ for token in doc])
 
     def process(self, dataframe: pd.DataFrame):
+        st.write(self.model._path)
         dataframe['first_word_lemma'] = dataframe['first_word'].apply(self.lemmatize)
         dataframe['second_word_lemma'] = dataframe['second_word'].apply(self.lemmatize)
 
