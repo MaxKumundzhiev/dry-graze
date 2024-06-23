@@ -9,7 +9,7 @@ import spacy
 class Lemmatizer:
     def __init__(self) -> None:
         # self.model = load_spacy("ru_core_news_sm")
-        self.model = spacy.load('ru_core_news_sm')
+        self.model = spacy.load('./ru_core_news_sm-3.7.0')
 
     def lemmatize(self, word):
         doc = self.model(word)
